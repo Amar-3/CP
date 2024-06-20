@@ -1,0 +1,33 @@
+class Solution {
+    // since problem is of the pattern of detecting cycle for termination. to disssatisfy the condition.
+    // if condition matches  that means i'll continuesly count int that number loop 
+    // never reach caonclusion,  hence it wont generate true as return 
+    // during calculation if sum comes out to be 1 that's it i reach the answer.
+    
+public:
+
+    int solve( int n){
+        int sum=0;
+        while(n>0){
+            int r=n%10;
+            sum+= r*r;
+            n/=10;
+
+        }
+        return sum;
+    }
+    bool isHappy(int n) {
+        unordered_set<int> us;
+
+       while(n!=1)
+       {
+        int sum=solve(n);
+        if(us.find(sum) !=us.end()) return false;
+        else us.insert(sum);
+        n=sum;
+
+
+       }
+        return true;
+    }
+};
