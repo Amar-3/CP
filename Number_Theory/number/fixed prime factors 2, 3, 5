@@ -1,0 +1,20 @@
+class Solution {
+public:
+    bool isUgly(int n) {
+        if (n <= 0) {
+            return false;
+        }
+        int primes[] = {2,3,5};
+
+        // only dividing by the prime factor by which that number is completely made off.
+        // in the last id n == 1 than yes my number is only madeup of the given prime if something else comes that means some other numbes are also the prime factor
+        
+        for (int p : primes) {
+            while (n % p == 0) {
+                n /= p;
+            }
+        }
+
+        return n == 1;
+    }
+};
